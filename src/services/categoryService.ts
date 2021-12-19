@@ -7,10 +7,12 @@ export async function getCategories() {
     return categories;
 }
 
-export async function getCategoriesWithTests() {
-    const categoriesWithTests = await getRepository(CategoryEntity).find({
-        relations: ['tests'],
-    });
-
-    return categoriesWithTests.map((e) => e.getCategory());
+export async function getCategoriesWithTestsByIdProfessor(id: string) {
+    const result = await getRepository(CategoryEntity)
+        .createQueryBuilder('category')
+        .leftJoinAndSelect('category.tests', 'tests')
+        .leftJoinAndSelect('tests.professor', 'professor')
+        .where('tests.professor.id = :id', {id: id})
+        .getMany();
+    return result;
 }

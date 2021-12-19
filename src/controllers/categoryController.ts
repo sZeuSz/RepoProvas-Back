@@ -15,8 +15,14 @@ export async function getCategories(req: Request, res: Response) {
 }
 
 export async function getCategoriesWithTests(req: Request, res: Response) {
+    const { id } = req.params;
+
     try {
-        const categoriesWithTests = await categoryService.getCategoriesWithTests();
+
+        if (!id) {
+            return res.status(400).send({message:'Parâmetro inválido.'})
+        }
+        const categoriesWithTests = await categoryService.getCategoriesWithTestsByIdProfessor(id);
 
         return res.send(categoriesWithTests);
     } catch (error) {

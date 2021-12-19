@@ -15,7 +15,8 @@ export class DisciplineEntity {
     @JoinColumn({ name: 'period_id' })
     period: PeriodEntity;
 
-    @OneToMany(() => TestEntity, test => test.discipline)
-    test: TestEntity;    
+    @OneToMany(() => TestEntity, tests => tests.discipline)
+    tests: TestEntity;
+    
 
 }

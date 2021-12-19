@@ -8,9 +8,9 @@ export class CategoryEntity {
     @Column()
     name: string;
 
-    @OneToMany(() => TestEntity, test => test.category)
+    @OneToMany(() => TestEntity, test => test.category, { eager: true })
     tests: TestEntity[];
-
+    
     getCategory() {
         
         return {

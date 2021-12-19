@@ -3,6 +3,11 @@ import { PeriodEntity } from "../entities/PeriodEntity";
 
 
 export async function getPeriodsWithDisciplines() {
-  const result = await getRepository(PeriodEntity).find({ relations: ["disciplines"] });
+  const result = await getRepository(PeriodEntity).find({
+    relations: ["disciplines"],
+    order: {
+        name: 'ASC',
+      },
+  });
   return result;
 }

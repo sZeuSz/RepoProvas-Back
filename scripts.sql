@@ -71,8 +71,15 @@ ALTER TABLE "tests" ADD CONSTRAINT "tests_fk0" FOREIGN KEY ("category_id") REFER
 ALTER TABLE "tests" ADD CONSTRAINT "tests_fk1" FOREIGN KEY ("professor_id") REFERENCES "professors"("id");
 ALTER TABLE "tests" ADD CONSTRAINT "tests_fk2" FOREIGN KEY ("discipline_id") REFERENCES "disciplines"("id");
 
-ALTER TABLE "professors_disciplines" ADD CONSTRAINT "professors_disciplines_fk0" FOREIGN KEY ("professor_id") REFERENCES "disciplines"("id");
-ALTER TABLE "professors_disciplines" ADD CONSTRAINT "professors_disciplines_fk1" FOREIGN KEY ("discipline_id") REFERENCES "professors"("id");
+ALTER TABLE "professors_disciplines" ADD CONSTRAINT "professors_disciplines_fk0" FOREIGN KEY ("professor_id") REFERENCES "professors"("id");
+ALTER TABLE "professors_disciplines" ADD CONSTRAINT "professors_disciplines_fk1" FOREIGN KEY ("discipline_id") REFERENCES "disciplines"("id");
+
+
+
+
+
+
+
 
 
 
@@ -103,8 +110,21 @@ INSERT INTO disciplines (name, period_id) VALUES ('LFA', 3);
 
 INSERT INTO professors (name) VALUEs('Eulanda');
 
-INSERT INTO tests (name, link, category_id, professor_id) VALUES('2020.1', 'www.google.pdf', 1, 2);
+INSERT INTO professors (name) VALUEs('Marco');
 
-INSERT INTO professors_disciplines (professor_id, discipline_id) VALUES('1','1')
+
+INSERT INTO professors_disciplines (professor_id, discipline_id) VALUES('1','1');
+
+INSERT INTO professors_disciplines (professor_id, discipline_id) VALUES('2','1');
+
+-- Marco
+INSERT INTO tests (name, link, category_id, professor_id, discipline_id) VALUES('2020.1', 'www.google.pdf', 1, 2, 1);
+-- Eulanda
+INSERT INTO tests (name, link, category_id, professor_id, discipline_id) VALUES('2020.2', 'www.google.pdf', 1, 1, 1);
+
 
 INSERT INTO tests (name, link, category_id, professor_id, discipline_id) VALUES('2020.1', 'www.google.pdf', '1', '1', '1');
+
+INSERT INTO tests (name, link, category_id, professor_id, discipline_id) VALUES('2020.2', 'www.google2.pdf', '2', '1', '1');
+
+INSERT INTO tests (name, link, category_id, professor_id, discipline_id) VALUES('2020.6', 'www.google2.pdf', '3', '1', '1');

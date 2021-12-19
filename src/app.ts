@@ -10,6 +10,8 @@ import * as userController from "./controllers/userConroller";
 import * as categoryController from "./controllers/categoryController";
 import * as professorController from "./controllers/professorController";
 import * as disciplineController from './controllers/disciplineController';
+import * as testsController from './controllers/testController';
+
 const app = express();
 
 app.use(cors());
@@ -18,8 +20,9 @@ app.use(express.json());
 app.get("/users", userController.getUsers);
 app.get('/categories', categoryController.getCategories);
 app.get('/professors', professorController.getProfessors);
-app.get('/tests-by-categories', categoryController.getCategoriesWithTests);
+app.get('/professors/:id/tests-by-categories', categoryController.getCategoriesWithTests);
 app.get('/disciplines', disciplineController.getDisciplines);
+app.get('/disciplines/:id/tests', testsController.getTests);
 export async function init () {
   await connectDatabase();
 }
