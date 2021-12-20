@@ -12,6 +12,9 @@ export async function getTests(req: Request, res: Response) {
 
         const categories = await testService.getTestsByDisciplineId(id);
 
+        if (!categories) {
+            return res.status(404).send({message: 'não foi possivel encontrar as disciplinas desse ID'})
+        }
         return res.send(categories);
         
     } catch (error) {
