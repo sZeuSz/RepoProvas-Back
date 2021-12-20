@@ -6,7 +6,6 @@ import "reflect-metadata";
 
 import connectDatabase from "./database";
 
-import * as userController from "./controllers/userConroller";
 import * as categoryController from "./controllers/categoryController";
 import * as professorController from "./controllers/professorController";
 import * as disciplineController from './controllers/disciplineController';

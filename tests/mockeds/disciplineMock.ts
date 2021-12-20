@@ -1,12 +1,3 @@
-/*const mockDisciplines =
-    [
-        {
-            id: expect.any(Number),
-            name: expect.any(String),
-            disciplines: expect.any(Array),
-        }
-    ]*/
-
 const mockDisciplines = [
         { id: expect.any(Number), name: '1°', disciplines: expect.any(Array)},
         { id: expect.any(Number), name: '2°', disciplines: expect.any(Array)},
@@ -17,6 +8,24 @@ const mockDisciplines = [
         { id: expect.any(Number), name: '7°', disciplines: expect.any(Array)},
         { id: expect.any(Number), name: '8°', disciplines: expect.any(Array)}
     ]
+
+export const mockDisciplinesWithCategoryAndTest = [
+  {
+    id: expect.any(Number),
+    name: expect.any(String),
+    tests: [
+            {
+                id: expect.any(Number),
+                name: expect.any(String),
+                link: expect.any(String),
+                professor: {
+                    id: expect.any(Number),
+                    name: expect.any(String),
+                },
+            }
+        ]
+  }
+]
 
 export {
     mockDisciplines,

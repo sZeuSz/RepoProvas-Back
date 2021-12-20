@@ -12,6 +12,7 @@ export async function getCategoriesWithTestsByIdProfessor(id: string) {
         .createQueryBuilder('category')
         .leftJoinAndSelect('category.tests', 'tests')
         .leftJoinAndSelect('tests.professor', 'professor')
+        .leftJoinAndSelect('tests.discipline', 'discipline')
         .where('tests.professor.id = :id', {id: id})
         .getMany();
     return result;
