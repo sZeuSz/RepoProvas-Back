@@ -14,6 +14,7 @@ export async function getCategoriesWithTestsByIdProfessor(id: string) {
         .leftJoinAndSelect('tests.professor', 'professor')
         .leftJoinAndSelect('tests.discipline', 'discipline')
         .where('tests.professor.id = :id', {id: id})
+        .orderBy('category.name', 'ASC')
         .getMany();
     return result;
 }
