@@ -23,6 +23,7 @@ app.get('/professors', professorController.getProfessors);
 app.get('/professors/:id/tests-by-categories', categoryController.getCategoriesWithTests);
 app.get('/disciplines', disciplineController.getDisciplines);
 app.get('/disciplines/:id/tests', testsController.getTests);
+
 export async function init () {
   await connectDatabase();
 }

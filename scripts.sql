@@ -65,11 +65,11 @@ CREATE TABLE "periods" (
 
 
 
-ALTER TABLE "disciplines" ADD CONSTRAINT "disciplines_fk0" FOREIGN KEY ("period_id") REFERENCES "periods"("id");
+ALTER TABLE "disciplines" ADD CONSTRAINT "disciplines_fk0" FOREIGN KEY ("period_id") REFERENCES "periods"("id") ON DELETE CASCADE;
 
-ALTER TABLE "tests" ADD CONSTRAINT "tests_fk0" FOREIGN KEY ("category_id") REFERENCES "category"("id");
-ALTER TABLE "tests" ADD CONSTRAINT "tests_fk1" FOREIGN KEY ("professor_id") REFERENCES "professors"("id");
-ALTER TABLE "tests" ADD CONSTRAINT "tests_fk2" FOREIGN KEY ("discipline_id") REFERENCES "disciplines"("id");
+ALTER TABLE "tests" ADD CONSTRAINT "tests_fk0" FOREIGN KEY ("category_id") REFERENCES "category"("id") ON DELETE CASCADE;
+ALTER TABLE "tests" ADD CONSTRAINT "tests_fk1" FOREIGN KEY ("professor_id") REFERENCES "professors"("id") ON DELETE CASCADE;
+ALTER TABLE "tests" ADD CONSTRAINT "tests_fk2" FOREIGN KEY ("discipline_id") REFERENCES "disciplines"("id" ON DELETE CASCADE);
 
 ALTER TABLE "professors_disciplines" ADD CONSTRAINT "professors_disciplines_fk0" FOREIGN KEY ("professor_id") REFERENCES "professors"("id");
 ALTER TABLE "professors_disciplines" ADD CONSTRAINT "professors_disciplines_fk1" FOREIGN KEY ("discipline_id") REFERENCES "disciplines"("id");
