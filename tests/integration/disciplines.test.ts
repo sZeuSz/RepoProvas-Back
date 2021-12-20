@@ -46,7 +46,7 @@ describe('Routes /disciplines', () => {
         await getRepository(DisciplineEntity).delete({});
     })
 
-    test('should return subject array with exams when getSubjectsWithExams', async () => {
+    test('should return status 200 and array with all disciplines registeds', async () => {
         console.log("baby", await getRepository(PeriodEntity).find());
         
         console.log('disciplines', await getRepository(DisciplineEntity).find());

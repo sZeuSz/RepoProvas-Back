@@ -17,7 +17,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/users", userController.getUsers);
 app.get('/categories', categoryController.getCategories);
 app.get('/professors', professorController.getProfessors);
 app.get('/professors/:id/tests-by-categories', categoryController.getCategoriesWithTests);
