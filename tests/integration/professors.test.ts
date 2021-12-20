@@ -21,7 +21,7 @@ afterAll(async () => {
 }) 
 
 
-describe('Routes /disciplines', () => {
+describe('Routes /professors', () => {
 
     beforeEach(async () => {
         const professor = getRepository(ProfessorEntity).create(generateProfessor());
