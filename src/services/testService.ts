@@ -13,15 +13,23 @@ export async function getTestsByDisciplineId(id: string) {
     return result;
 }
 
-/*
-export async function getTestsByDisciplineId(id: string) {
-    // const testsByDisciplineId = await getRepository(TestEntity).find({id:1});
-    const result = await getRepository(TestEntity)
-        .createQueryBuilder('tests')
-        .leftJoinAndSelect('tests.discipline', 'discipline')
-        .leftJoinAndSelect('tests.professor', 'professor')
-        .leftJoinAndSelect('tests.category', 'category')
-        .where('discipline.id = :value', {value: 1})
-        .getMany();
-    return result;
-}*/
+export async function postTest(testBody: TestEntity) {
+    const {
+        name,
+        link,
+        category,
+        discipline,
+        professor,
+    } = testBody;
+
+    const result = getRepository(TestEntity)
+        .create({
+            name,
+            link,
+            category,
+            discipline,
+            professor,
+        });
+
+    await getRepository(TestEntity).save(result);
+}

@@ -1,4 +1,6 @@
 import { Request, Response } from 'express';
+import { TestEntity } from '../entities/TestEntity';
+import { testBodySchema } from '../schemas/testSchema';
 import * as testService from '../services/testService';
 
 export async function getTests(req: Request, res: Response) {
@@ -20,5 +22,22 @@ export async function getTests(req: Request, res: Response) {
     } catch (error) {
         console.log(error);
         return res.sendStatus(500);
+    }
+}
+
+
+export async function RegisterTest(req: Request, res: Response) {
+    const testBody: TestEntity = req.body;
+    const invalidBody = testBodySchema.validate(testBody).error;
+
+    if (invalidBody) {
+        return res.status(400).send({message: 'favor, preencher direito os campos, há campos inválidos ->>' + invalidBody});
+    }
+
+    try {
+        await testService.postTest(testBody);
+        res.sendStatus(201);
+    } catch (err) {
+        res.sendStatus(500);
     }
 }

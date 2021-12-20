@@ -17,6 +17,5 @@ export class DisciplineEntity {
 
     @OneToMany(() => TestEntity, tests => tests.discipline)
     tests: TestEntity;
-    
 
 }

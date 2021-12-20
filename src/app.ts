@@ -21,7 +21,7 @@ app.get('/professors', professorController.getProfessors);
 app.get('/professors/:id/tests-by-categories', categoryController.getCategoriesWithTests);
 app.get('/disciplines', disciplineController.getDisciplines);
 app.get('/disciplines/:id/tests', testsController.getTests);
-
+app.post('/tests', testsController.RegisterTest);
 export async function init () {
   await connectDatabase();
 }
